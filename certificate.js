@@ -153,7 +153,7 @@ $('#form-generate').addEventListener('submit', async event => {
   const profile = getProfile();
   const reason = getAndSaveReason()
   const pdfBlob = await generatePdf(profile, reason)
-  downloadBlob(pdfBlob, `attestation-${profile.name.replace('\'', '').split(' ').join('_')}.pdf`)
+  downloadBlob(pdfBlob, `attestation-${profile.name.replace('\'', '_').replace(' ', '_')}.pdf`)
 })
 
 restoreReason()
