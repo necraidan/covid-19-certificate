@@ -150,9 +150,10 @@ $('#reset-signature').addEventListener('click', () => signaturePad.clear())
 
 $('#form-generate').addEventListener('submit', async event => {
   event.preventDefault()
+  const profile = getProfile();
   const reason = getAndSaveReason()
-  const pdfBlob = await generatePdf(getProfile(), reason)
-  downloadBlob(pdfBlob, 'attestation.pdf')
+  const pdfBlob = await generatePdf(profile, reason)
+  downloadBlob(pdfBlob, `attestation-${profile.name}.pdf`)
 })
 
 restoreReason()
